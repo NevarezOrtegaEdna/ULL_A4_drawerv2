@@ -1,43 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:nevarezdrawerv2/movies.dart';
+import 'package:nevarezdrawerv2/profile.dart';
+import 'package:nevarezdrawerv2/row_cinco.dart';
+import 'package:nevarezdrawerv2/row_seis.dart';
+import 'package:nevarezdrawerv2/row_siete.dart';
 
-void main() => runApp(MyApp());
+import 'contact.dart';
+import 'inicio.dart';
+
+void main() {
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  static const String inicio = Inicio.routeName;
+  static const String profile = Profile.routeName;
+  static const String movies = Movies.routeName;
+  static const String contacts = Contact.routeName;
+  static const String row_cinco = Row_cinco.routeName;
+  static const String row_seis = Row_seis.routeName;
+  static const String row_siete = Row_siete.routeName;
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // Application name
-      title: 'Flutter Hello World',
-      // Application theme data, you can set the colors for the application as
-      // you want
+      debugShowCheckedModeBanner: false,
+      title: 'Ejemplo Drawer Menu',
       theme: ThemeData(
-        // useMaterial3: false,
         primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      // A widget which will be started on application startup
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  final String title;
-  const MyHomePage({super.key, required this.title});  
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        // The title text which will be shown on the action bar
-        title: Text(title),
-      ),
-      body: Center(
-        child: Text(
-          'Hello, World!',
-        ),
-      ),
+      routes: {
+        inicio: (context) => Inicio(),
+        profile: (context) => Profile(),
+        movies: (context) => Movies(),
+        contacts: (context) => Contact(),
+        row_cinco: (context) => Row_cinco(),
+        row_seis: (context) => Row_seis(),
+        row_siete: (context) => Row_siete(),
+      },
+      home: Inicio(),
     );
   }
 }
